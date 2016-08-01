@@ -1,0 +1,155 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style:none;
+	font-family:Microsoft YaHei;
+}
+img{
+	border:0;
+}
+body{
+	background: #ccc;
+}
+$width:600px;
+%center{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.qipan{
+	width:$width;
+	height: $width;
+	@extend %center;
+	background: white;
+	position: relative;
+	background-color: #E7B769;
+}
+
+.qizi{
+	float: left;
+	width: $width/15-$width/60;
+	height: $width/15-$width/60;
+	border-radius: 50%;
+	margin: 5px;
+	position: relative;
+	z-index: 2;
+}
+.qizi.bai{
+    background-color: #fff;
+}
+.qizi.hei{
+    background-color: #000;
+}
+@for $i from 0 through 14{
+	.qipan b:nth-of-type(#{$i+1}){
+		top: $width/30+$i*$width/15;
+	};
+	.qipan i:nth-of-type(#{$i+1}){
+		left: $width/30+$i*$width/15;
+	}
+}
+.container .qipan span{
+	display: block;
+	width: $width/40;
+	height: $width/40;
+	background-color: black;
+	position: absolute;
+	border-radius: 50%;
+	transform:translate3d(-45%,-45%,0);
+	&:nth-of-type(1){
+		left:3.5*$width/15;
+		top: 3.5*$width/15;
+	};
+	&:nth-of-type(2){
+		left:11.5*$width/15;
+		top: 3.5*$width/15;
+	};
+	&:nth-of-type(3){
+		left:7.5*$width/15;
+		top: 7.5*$width/15;
+	};
+	&:nth-of-type(4){
+		left:3.5*$width/15;
+		top: 11.5*$width/15;
+	};
+	&:nth-of-type(5){
+		left:11.5*$width/15;
+		top: 11.5*$width/15;
+	};
+	animation:feiru 1s ease forwards;
+	@for $i from 1 through 5{
+		&:nth-of-type(#{$i}){
+		animation-delay:$i*.5s;
+		}
+	}
+	opacity:0;
+}
+@keyframes feiru{
+	0%{
+		transform:translate3d(0,-1000px,0);
+	}
+	100%{
+		transform:translate3d(0,0,0);
+	    transform:translate3d(-45%,-45%,0);
+		opacity: 1;
+	}
+
+}
+.hang{
+	display: block;
+	height: 1px;
+	width: $width/1-$width/15;
+	background-color: black;
+	position: absolute;
+	left: $width/30;
+
+	animation:diaoluo 1s ease forwards;
+	@for $i from 1 through 15{
+	&:nth-of-type(#{$i}){
+	animation-delay:$i* 0.1s;
+		}
+	}
+}
+@keyframes diaoluo{
+	0%{
+		transform:translate3d(0,-1000px,0);
+		height: 20px;
+		opacity: 0;
+	}
+	100%{
+		transform:translate3d(0,0,0);
+		opacity: 1;
+	}
+}
+.shu{
+	display: block;
+	width: 1px;
+	height: $width/1-$width/15;
+	background-color: black;
+	position: absolute;
+	top: $width/30;
+	animation:shu 1s ease forwards;
+	@for $i from 1 through 15{
+		&:nth-of-type(#{$i}){
+		animation-delay:$i* 0.1s;
+		}
+	}
+}
+@keyframes shu{
+	0%{
+		transform:translate3d(-1000px,0,0) rotateZ(180deg);
+		width: 20px;
+		opacity: 0;
+
+	}
+	100%{
+		transform:translate3d(0,0,0);
+		opacity: 1;
+	}
+}
+
+
+
